@@ -1,0 +1,19 @@
+$cor1:blue;
+
+h1{
+    color: $cor1;
+}
+
+%mensagem{
+    background-color: lightpink;
+}
+
+.aviso{
+    @extend %mensagem;
+    font-size: 5ch;
+}
+
+.informacao{
+    @extend %mensagem;
+    font-size: 3ch;
+}

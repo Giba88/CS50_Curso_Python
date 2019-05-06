@@ -5,12 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="1sass.css" rel="stylesheet">
+    <style>
+
+        ol > li{
+            color: red;
+        }
+
+        li{
+            height:30px;
+        }
+
+        input[type=number]{
+            background-color:yellowgreen;
+        }
+
+        @media print{
+            .NaoImprime{
+                display: nome;
+            }
+        }
+
+        @media (min-width: 500px){
+            .NaoImprime{
+                background-color:green;
+            }
+            p::before{
+                content: "Estilo CSS aplicado \21d2 "
+            }
+        }
+
+        @media (max-width:499px){
+            .NaoImprime{
+                background-color: red;
+            }
+        }
+
+    </style>
+
 </head>
 <body>
-    Hello World! Hello again! Hello Hello
-    New feature (Caracteristica) <!--Branch -->
+    <h1 class="aviso"> Hello World! Hello again! Hello Hello </h1>
+    <h1 class="informacao"> New feature (Caracteristica) </h1> <!--Branch --> 
     <!-- div>ul>li*3 -->
-    <div id="mainDiv">
+    <div id="mainDiv" style="padding:50px">
         <ul>
             <li>
                 <input name="nome" list="nomes" placeholder="Filtrar">
@@ -22,9 +60,33 @@
                     <option value="Roberval"></option>
                 </datalist>
             </li>                
-            <li></li>
-            <li></li>
+            <li>
+                <input name="Ano" type="number" placeholder="Insira o ano">
+            </li>
+            <li>
+                <input name="Nome" type="text" placeholder="Preencha o Nome">
+            </li>
         </ul>
+
+        <ol>
+            <li>
+                Materia prima
+            </li>
+            <li>
+                moldar
+            </li>
+            <ul>
+                <li>
+                    remanufaturar
+                </li>
+            </ul>
+            <li>
+                Refinar
+            </li>
+        </ol>
+        <p class="NaoImprime">
+            Não irá aparecer na impressão
+        </p>
     </div>
 </body>
 </html>

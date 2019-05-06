@@ -1,0 +1,17 @@
+h1 {
+  color: blue;
+}
+
+.informacao, .aviso {
+  background-color: lightpink;
+}
+
+.aviso {
+  font-size: 5ch;
+}
+
+.informacao {
+  font-size: 3ch;
+}
+
+/*# sourceMappingURL=1sass.css.map */
