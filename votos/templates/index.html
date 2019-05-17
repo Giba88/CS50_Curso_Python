@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../static/socket.io.js"></script>
+    <script type="text/javascript" src="../static/index.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <title>Voto</title>
+</head>
+<body>
+    <div>Votos Sim: <span id="sim">{{ votos["sim"] }}</span></div>
+    <div>Votos Não: <span id="nao">{{ votos["nao"] }}</span></div>
+    <div>Votos Talvez: <span id="talvez">{{ votos["talvez"] }}</span></div>
+    <hr>
+    <button data-voto="sim"> Sim </button>
+    <button data-voto="nao"> Não </button>
+    <button data-voto="talvez"> Talvez </button>    
+</body>
+</html>
