@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Página Dinamica</title>
+
+    <style>
+        .esconde{
+            float: right;
+        }
+
+        .post{
+            background-color:#77dd11;
+            padding: 20px;
+            margin: 10px;            
+        }
+
+        body{
+            padding-bottom: 50px;
+        }
+    </style>
+
+    <script>
+        let contador = 1;
+        const quantidade = 20;
+
+        document.addEventListener("DOMContentLoaded", carrega);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            Carrega_Pagina("primeiro")
+
+            document.querySelectorAll(".nav-link").forEach(link => {
+                link.onclick = () => {
+                    Carrega_Pagina(link.dataset.page);
+
+                    return false;
+                };
+            });
+        });
+
+        window.onpopstate = e =>{
+            const DATA = e.state;
+            document.title = DATA.title;
+            document.querySelector("#body").innerHTML = DATA.text;
+        };
+
+        function Carrega_Pagina(nome){
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", `/${nome}`)
+            xhr.onload = () => {
+                const resposta = xhr.responseText;
+                document.querySelector("#body").innerHTML = resposta;
+
+                document.title = nome;
+                history.pushState({"title": nome, "text": resposta}, nome, nome);
+            };
+            xhr.send();
+        }
+
+        window.onscroll = () => {
+            /*console.log('----');
+            console.log(window.innerHeight);
+            console.log(window.scrollY);
+            console.log(document.body.offsetHeight);*/
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight){
+                carrega();
+            }
+        };
+
+        function carrega(){
+            const inicio = contador;
+            const fim = inicio + quantidade - 1;
+            contador = fim + 1;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/posts");
+            xhr.onload = () => {
+                const dado = JSON.parse(xhr.responseText);
+                dado.forEach(adiciona_post);
+            };
+
+            const dado = new FormData();
+            dado.append("inicio", inicio);
+            dado.append("fim", fim);
+
+            xhr.send(dado);
+        }
+
+function adiciona_post(conteudos){
+    const post = document.createElement("div");
+    post.className = "post";
+    post.innerHTML = conteudos;
+
+    const esconde = document.createElement("button");
+    esconde.className = "esconde";
+    esconde.innerHTML = "Esconder";
+    post.append(esconde);
+
+    esconde.onclick = function() {
+        this.parentElement.remove();
+    };
+
+    document.querySelector("#posts").append(post);
+}
+
+    </script>
+</head>
+<body>
+    <ul id="nav">
+        <li><a href="" class="nav-link" data-page="primeiro"> Primeira Página </a></li>
+        <li><a href="" class="nav-link" data-page="segundo"> Segunda Página </a></li>
+        <li><a href="" class="nav-link" data-page="terceiro"> Terceira Página </a></li>
+    </ul>
+    <hr>
+    <div id="body">
+
+    </div>
+    <!-- Emmet funções para criação rápida de paginas-->
+    <!-- table>(thead>th*3)+tbody>td*3>a[href="/$$"]{clique aqui}+div#id$.claa1{div $$$} -->
+    <!-- div>(ul#idul>li*3)+(ol>li*2>a[href="index$.html"]{clique aqui})+div>p.classe1{Paragrafo} -->
+    
+    <div id="posts"></div>    
+    
+</body>
+</html>
