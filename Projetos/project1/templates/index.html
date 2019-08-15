@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Books
+{% endblock %}
+
+{% block head %}
+    Books
+{% endblock %}
+
+{% block left %}
+    <h2>Side</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+{% endblock %}
+
+{% block middle %}
+    <h2>Main Content</h2>
+
+    <ul>
+    {% for item in books %}
+        <li>{{item}}</li>
+    {% else %}
+        <li>No books found</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block right %}
+    <h2>Side</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+{% endblock %}

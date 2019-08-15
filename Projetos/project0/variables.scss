@@ -1,0 +1,62 @@
+$color: blue;
+$margin: 1%;
+$padding: 4%;
+$width: 20%;
+
+body{
+    width: 100%;
+}
+
+ul {
+    font-size: 14px;
+    color: $color;
+}
+
+ol {
+    font-size: 18px;
+    color: $color;
+}
+
+.div_center{
+    text-align: center;
+    margin: $margin;
+    padding: $padding;
+}
+
+.div_left{
+    text-align: left;
+    float: left;
+    width: 20%;
+    width: $width;
+    margin: $margin;
+    padding: $padding;
+}
+
+@media (max-width: 499px) {
+    .div_left {
+      visibility: hidden;
+      width: 0px;
+    }
+  }
+
+.div_right{
+    text-align: right;
+    float: right;
+    width: 20%;
+    width: $width;
+    margin: $margin;
+    padding: $padding;
+}
+
+@media (max-width: 999px) {
+    .div_right {
+      visibility: hidden;
+      width: 0px;
+    }
+}
+
+#clearfix::after {
+content: "";
+clear: both;
+display: table;
+}

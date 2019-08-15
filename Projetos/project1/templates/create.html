@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block head %}
+    Login
+{% endblock %}
+
+{% block left %}
+    <h2></h2>
+{% endblock %}
+
+{% block middle %}
+    <h2>Main Content</h2>
+    <form action="{{ url_for('create1')}}" method="POST">
+        <div class="form-group">
+            <label>User name</label>
+            <input name="username" class="form-control" placeholder="Enter user name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input name="password" onblur="converte(this)" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Confirm</label>
+            <input name="Confirm" onblur="converte(this)" type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <span id="alert">{{ message }}</span>
+{% endblock %}
+
+{% block right %}
+    <h2></h2>
+{% endblock %}

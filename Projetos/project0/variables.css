@@ -1,0 +1,57 @@
+body {
+  width: 100%;
+}
+
+ul {
+  font-size: 14px;
+  color: blue;
+}
+
+ol {
+  font-size: 18px;
+  color: blue;
+}
+
+.div_center {
+  text-align: center;
+  margin: 1%;
+  padding: 4%;
+}
+
+.div_left {
+  text-align: left;
+  float: left;
+  width: 20%;
+  width: 20%;
+  margin: 1%;
+  padding: 4%;
+}
+
+@media (max-width: 499px) {
+  .div_left {
+    visibility: hidden;
+    width: 0px;
+  }
+}
+.div_right {
+  text-align: right;
+  float: right;
+  width: 20%;
+  width: 20%;
+  margin: 1%;
+  padding: 4%;
+}
+
+@media (max-width: 999px) {
+  .div_right {
+    visibility: hidden;
+    width: 0px;
+  }
+}
+#clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*# sourceMappingURL=variables.css.map */

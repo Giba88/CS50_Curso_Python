@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block head %}
+    Login
+{% endblock %}
+
+{% block left %}
+    <h2></h2>
+{% endblock %}
+
+{% block middle %}
+    <h2>Main Content</h2>
+    <form action="{{ url_for('login') }}" method="POST">
+        <!--<input class="form-text" type="text" name="login">
+        <input class="form-text" type="password" name="password" onblur="converte(this)">
+        <input class="button-ok" type="submit" value="Signing in">-->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Login</label>
+            <input name="login" class="form-control" placeholder="Enter user name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input name="password" onblur="converte(this)" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <a href="{{ url_for('create1') }}">
+            <input type="button" class="btn btn-secondary" value="Create new login">
+          </a>
+    </form>
+    <span id="alert">{{ message }}</span>
+{% endblock %}
+
+{% block right %}
+    <h2></h2>
+{% endblock %}

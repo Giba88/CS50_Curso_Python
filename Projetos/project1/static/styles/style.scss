@@ -1,0 +1,138 @@
+$margin: 0;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: $margin;
+}
+
+.header {
+    background-color: #f1f1f1;
+    padding-top: 40px;
+    padding-bottom: 0px;
+    text-align: center;
+    border-style: solid;
+    border-color: #f1f1f1;
+}
+
+/* Nav bar */
+.ul_nav {
+    list-style-type: none;
+    margin: $margin;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;    
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+@media screen and (max-height: 600px) {
+    .ul_nav {
+        position: inherit;
+    }
+    .header{
+        padding-top: 0px;
+    }
+}
+
+.a_bar {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.a_bar:hover {
+    background-color: #111;
+    font-weight: bold;
+    color: white;
+}
+
+.a_active:hover {
+    background-color: rgb(61, 160, 64);
+    font-weight: bold;
+    color: white;
+}
+
+.li_left {
+    float: left;
+}
+
+.li_right {
+    float: right;
+}
+
+.a_active {
+    background-color: #4CAF50;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Columns for the main content */
+.column {
+    float: left;
+    padding: 10px;
+    padding-top: 0px;
+}
+
+/* Left and Right columns */
+.column.side {
+    width: 25%;
+}
+
+/* Middle column */
+.column.middle {
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+        width: 100%;
+    }
+}
+
+.footer {
+    background-color: #f1f1f1;
+    padding: 5px;
+    text-align: center;
+}
+
+.form-text {
+    display: block;
+    padding: 4px;
+    margin: 5px;
+}
+
+.button-ok {
+    background-color: aquamarine;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 40px;
+    text-decoration: none;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#alert {
+    font-weight: bold;
+    color: red;
+    margin: 5px;
+}
