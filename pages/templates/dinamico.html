@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Página Dinamica</title>
+
+    <style>
+        .esconde{
+            float: right;
+        }
+
+        .post{
+            background-color: #77dd11;
+            padding: 20px;
+            margin: 10px;
+            animation-name: ocutar;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation-play-state: paused;
+        }
+
+        body{
+            padding-bottom: 50px;        
+        }        
+
+        @keyframes ocutar{
+            0%{
+                opacity: 1;
+                height: 100%;
+                line-height: 100%;
+                padding: 20px;
+                margin-bottom: 10px;
+            }
+            75%{
+                opacity: 0;
+                height: 100%;
+                line-height: 100%;
+                padding: 20px;
+                margin-bottom: 10px;
+            }
+            100%{
+                opacity: 0;
+                height: 0px;
+                line-height: 0px;
+                padding: 0px;
+                margin-bottom: 0px;
+            }
+        }
+    </style>
+
+    <script src="../static/handlebars-v4.1.2.js"></script>
+
+    <script id="post" type="text/x-handlebars-template">
+        <div class="post">
+            {% raw -%}
+                {{ conteudo }}
+            {%- endraw %}
+            <button class="esconde">Esconder</button>
+        </div>
+    </script>
+
+    <script>
+        let contador = 1;
+        const quantidade = 20;
+
+        document.addEventListener("DOMContentLoaded", carregar);
+
+        window.onscroll = () =>{
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight){
+                carregar();
+            }
+        };
+
+        document.addEventListener("click", event =>{
+            const elemento = event.target;
+            if (elemento.className === "esconde"){
+                elemento.parentElement.style.animationPlayState = "running";
+                elemento.parentElement.addEventListener("animationend", () => {
+                    elemento.parentElement.remove();
+                });  
+            }
+        });
+
+        function carregar(){
+            const inicio = contador;
+            const fim = inicio + quantidade - 1;
+            contador = fim + 1;            
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/post");
+            xhr.onload = () => {
+                    const data = JSON.parse(xhr.responseText);
+                    data.forEach(adiciona_post);
+                };
+
+            const dado = new FormData();
+            dado.append("inicio", inicio);
+            dado.append("fim", fim);
+            xhr.send(dado);
+        }
+
+        const post_template = Handlebars.compile(document.querySelector("#post").innerHTML);
+        function adiciona_post(conteudos){
+            const post = post_template({"conteudo": conteudos});
+            document.querySelector("#posts").innerHTML += post;
+        }
+    </script>
+</head>
+<body>
+    <div id="posts"></div>
+</body>
+</html>

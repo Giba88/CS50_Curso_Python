@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minhas Paginas</title>
+</head>
+<body>
+    <ul id="nav">
+        <li><a href="{{ url_for('primeiro') }}"> Primeira Página </a></li>
+        <li><a href=" {{ url_for('segundo') }}"> Segunda Página </a></li>
+        <li><a href=" {{ url_for('terceiro') }}"> Terceira Página </a></li>
+    </ul>
+    <hr>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>
